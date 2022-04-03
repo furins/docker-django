@@ -1,0 +1,13 @@
+/.envs
+/src
+*.pyc
+.idea
+.vscode
+*/*.pyc
+*/*/*.pyc
+*/migrations/*
+/__pycache__
+*/static/
+.DS_Store
+.env
+**/.DS_Store
