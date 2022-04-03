@@ -1,4 +1,4 @@
-/.envs
+/envs
 /src
 *.pyc
 .idea

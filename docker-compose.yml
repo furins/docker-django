@@ -11,7 +11,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ../src:/src
+      - ./src:/src
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - web
@@ -20,7 +20,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: compose/django/Dockerfile
+      dockerfile: infrastructure/compose/django/Dockerfile
     container_name: dz01
     depends_on:
       - db
@@ -31,16 +31,16 @@ services:
     links:
       - redis
     env_file:
-      - .templates/.envs/.django
+      - envs/.django
     networks:
       - djangonetwork
   db:
     build:
       context: .
-      dockerfile: compose/postgres/Dockerfile
+      dockerfile: infrastructure/compose/postgres/Dockerfile
     container_name: pz01
     env_file:
-      - .envs/.postgres
+      - envs/.postgres
     volumes:
       - local_postgres_data:/var/lib/postgresql/data
       - local_postgres_data_backups:/backups
